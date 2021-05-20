@@ -1,0 +1,87 @@
+/**
+  MIXINS
+**/
+
+// ======================================
+// Vertical Align
+// ======================================
+
+@mixin vertical-align {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+// ======================================
+// Horizontal Align
+// ======================================
+
+@mixin horizontal-align {
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+@mixin vertical-horizontal-align {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// ======================================
+// Visually Hidden
+//
+// Visually hide the element from the
+// screen but still have it accessible
+// via screenreaders
+//
+// ======================================
+@mixin isVisuallyHidden() {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+// ======================================
+// Ellipsis
+// ======================================
+
+@mixin ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// ======================================
+// IE MEDIA QUERY
+// ======================================
+
+@mixin ieonly() {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
+}
+
+// ======================================
+// Font Size, Line Height and Letter Spacing
+// ======================================
+
+@mixin font($size: null, $line-height: null, $letter-spacing: null) {
+  @if ($size) {
+    font-size: $size;
+  }
+
+  @if ($line-height) {
+    line-height: $line-height;
+  }
+
+  @if ($letter-spacing) {
+    letter-spacing: $letter-spacing;
+  }
+}

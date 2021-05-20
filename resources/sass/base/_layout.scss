@@ -1,0 +1,69 @@
+/**
+* Site-wide layout styling
+*/
+
+html {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+body {
+  overflow-x: hidden;
+  overscroll-behavior: none;
+
+  &.menu-open {
+    overflow-y: hidden;
+  }
+}
+
+section {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  @include grid-container;
+}
+
+.container {
+  @include grid-container;
+  @include margin(0 auto);
+
+  width: 100%;
+
+  &:after {
+    content: '';
+    display: none;
+  }
+
+  &--xl {
+    max-width: $container-xl-width;
+
+    @include grid-media($sm) {
+      @include padding(null 30px);
+    }
+  }
+
+  &--lg {
+    @include padding(null 20px);
+
+    max-width: $container-lg-width;
+
+    @include grid-media($sm) {
+      @include padding(null 50px);
+    }
+
+    @include grid-media($md) {
+      @include padding(null 50px);
+    }
+
+    @include grid-media($lg) {
+      @include padding(null 0);
+    }
+  }
+}
+
+// fix for input line-height issues on Safari
+input::-webkit-input-placeholder {
+  line-height: normal !important;
+}

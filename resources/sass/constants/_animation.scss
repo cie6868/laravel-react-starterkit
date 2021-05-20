@@ -1,0 +1,11 @@
+/**
+  ANIMATIONS
+  animation constants
+**/
+
+$transition-one-second: .1s;
+$transition-single: .3s;
+$transition-double: .6s;
+$transition-triple: .8s;
+
+$transition: all $transition-single cubic-bezier(.075, .82, .165, 1);
