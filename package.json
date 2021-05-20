@@ -37,5 +37,8 @@
         "stylelint-config-standard": "^22.0.0",
         "stylelint-order": "^4.1.0",
         "stylelint-webpack-plugin": "^2.1.1"
+    },
+    "dependencies": {
+        "react-router-dom": "^5.2.0"
     }
 }

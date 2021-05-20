@@ -1,8 +1,16 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Sample from './Sample';
 
 function App() {
   return (
-    <h1>Hello</h1>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/">
+          <Sample/>
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
