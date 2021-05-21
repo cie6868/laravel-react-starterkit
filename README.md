@@ -4,7 +4,7 @@
 Starter kit for DxDy Elevate.
 
 * Laravel with JWT authentication configured
-* React with Redux Toolkit, Router
+* React with Redux Toolkit, Router, persistence
 * SCSS with standard file structure
 * Linting of styles and scripts
 * BrowserSync for React and Sass

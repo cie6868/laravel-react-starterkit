@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
 import App from './components/App';
+import LoadingIndicator from './components/LoadingIndicator';
 import store from './store';
 
 /**
@@ -21,9 +24,12 @@ require('./bootstrap');
 require('./components/App');
 
 if (document.getElementById('react-root')) {
+  const persistor = persistStore(store);
   ReactDOM.render(
     <Provider store={store}>
-      <App env={process.env}/>
+      <PersistGate loading={<LoadingIndicator/>} persistor={persistor}>
+        <App env={process.env}/>
+      </PersistGate>
     </Provider>,
     document.getElementById('react-root'),
   );
