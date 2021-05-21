@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import App from './components/App';
+import store from './store';
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -19,5 +21,10 @@ require('./bootstrap');
 require('./components/App');
 
 if (document.getElementById('react-root')) {
-  ReactDOM.render(<App/>, document.getElementById('react-root'));
+  ReactDOM.render(
+    <Provider store={store}>
+      <App env={process.env}/>
+    </Provider>,
+    document.getElementById('react-root'),
+  );
 }
