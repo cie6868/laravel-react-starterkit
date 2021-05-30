@@ -1,0 +1,29 @@
+{
+    "name": "login",
+    "class": "login-form",
+    "fields": [
+        {
+            "name": "username",
+            "label": "Username",
+            "type": "text",
+            "placeholder": "Username",
+            "validation": "required|min:3",
+            "validationServer": "exists:users,username",
+            "class": "txt-username",
+            "wrapperClass": "txt-username-wrapper"
+        },
+        {
+            "name": "password",
+            "label": "Password",
+            "type": "password",
+            "placeholder": "Password",
+            "validation": "required|min:3",
+            "class": "txt-password",
+            "wrapperClass": "txt-password-wrapper"
+        }
+    ],
+    "submit": {
+        "label": "Login",
+        "class": "btn-login"
+    }
+  }
