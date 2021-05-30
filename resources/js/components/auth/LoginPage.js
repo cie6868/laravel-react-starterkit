@@ -1,28 +1,18 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
+import JsonForm from '../../../../json-form-react/JsonForm';
 import { login } from '../../services/authService';
+
+const loginJson = require('../../../../forms/login.json');
 
 function LoginPage() {
 
   const token = useSelector((state) => state.auth.token);
 
-  const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-  });
-
-  const onFormChange = useCallback((event) => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value,
-    });
-  });
-
-  const onLoginClick = useCallback((ev) => {
-    login(formData.username, formData.password);
-    ev.preventDefault();
-  }, [formData]);
+  const onSubmit = useCallback((values) => {
+    login(values.username, values.password);
+  }, []);
 
   // if logged in
   if (token) {
@@ -31,17 +21,7 @@ function LoginPage() {
 
   return (
     <section>
-      <form>
-        <label>
-          Username
-          <input type="text" name="username" value={formData.username} onChange={onFormChange}/>
-        </label>
-        <label>
-          Password
-          <input type="password" name="password" value={formData.password} onChange={onFormChange}/>
-        </label>
-        <button type="submit" onClick={onLoginClick}>Login</button>
-      </form>
+      <JsonForm json={loginJson} onSubmit={onSubmit}/>
     </section>
   );
 
