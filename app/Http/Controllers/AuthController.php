@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\JsonForm\JsonFormValidator;
 
 class AuthController extends Controller
 {
@@ -19,6 +20,8 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        (new JsonFormValidator(base_path('forms/login.json')))->validate($request);
+
         $credentials = [
             'username' => $request->username,
             'password' => $request->password,
