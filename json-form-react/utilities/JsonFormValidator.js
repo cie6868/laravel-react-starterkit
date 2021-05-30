@@ -6,12 +6,18 @@ export default class JsonFormValidator {
 
   validateForm(values) {
     const errorList = {};
+    let errorCount = 0;
+
     for (const [fieldName, fieldValue] of Object.entries(values)) {
       const errorText = this._validateField(fieldName, fieldValue);
       if (errorText) {
         errorList[fieldName] = errorText;
+        errorCount += 1;
       }
     }
+
+    errorList['_count'] = errorCount;
+
     return errorList;
   }
 

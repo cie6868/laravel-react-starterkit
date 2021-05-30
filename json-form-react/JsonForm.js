@@ -37,13 +37,13 @@ const JsonForm = (props) => {
     const errorList = validator.validateForm(formData);
     setFormErrors(errorList);
 
-    if (errorList.length === 0) {
+    if (errorList._count === 0) {
       props.onSubmit(formData);
     }
   }, [props.json, formData]);
 
-  const errors = formErrors && Object.entries(formErrors).length > 0 && Object.entries(formErrors).map(([fieldName, errorText]) => {
-    return (
+  const errors = formErrors && formErrors._count > 0 && Object.entries(formErrors).map(([fieldName, errorText]) => {
+    return !fieldName.startsWith('_') && (
       <li key={fieldName}>{errorText}</li>
     );
   });
