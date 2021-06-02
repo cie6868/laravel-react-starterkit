@@ -51,3 +51,11 @@ export const logout = async (token) => {
       store.dispatch(logoutAction());
     });
 };
+
+export const accountCreation = async (token,fullname, address) => {
+  const response = await getAxiosInstance(token)
+    .post('createAccount',{fullname,address});
+
+  return response.data;
+  // console.log(response);
+};

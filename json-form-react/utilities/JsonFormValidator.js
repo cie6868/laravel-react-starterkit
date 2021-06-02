@@ -55,6 +55,8 @@ export default class JsonFormValidator {
       return this._min(ruleConditions, value);
     case 'max':
       return this._max(ruleConditions, value);
+    case 'regex':
+      return this._regex(ruleConditions, value);
     default:
       // ignore unknown rules
       return null;
@@ -110,4 +112,12 @@ export default class JsonFormValidator {
     return null;
   }
 
+  _regex(condition, value) {
+    const regexCondition = new RegExp(condition.replaceAll('/', ''));
+    if (regexCondition.test(value)) {
+      return null;
+    } else {
+      return 'The value for __FIELD_NAME__ should contain only letters and spaces';
+    }
+  }
 }

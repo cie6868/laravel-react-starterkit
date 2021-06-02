@@ -1,0 +1,83 @@
+{
+    "name": "createAccount",
+    "class": "createAccount-form",
+    "fields": [
+        {
+            "name": "fullname",
+            "label": "Full Name",
+            "type": "text",
+            "placeholder": "fullname",
+            "validation": "required|regex:/^[a-zA-Z ]*$/",
+            "class": "txt-fullname",
+            "wrapperClass": "txt-fullname-wrapper"
+        },
+        {
+            "name": "address",
+            "label": "Address",
+            "type": "text",
+            "placeholder": "Residential Address",
+            "validation": "required|alpha_dash",
+            "class": "txt-address",
+            "wrapperClass": "txt-address-wrapper"
+        },
+        {
+            "name": "dob",
+            "label": "Date of Birth",
+            "type": "date",
+            "placeholder": "Date of Birth",
+            "validation": "required|alpha_dash|min:3",
+            "class": "txt-address",
+            "wrapperClass": "date-dob-wrapper"
+        },
+        {
+            "name": "nic",
+            "label": "NIC",
+            "type": "text",
+            "placeholder": "NIC Number",
+            "validation": "required|alpha_num",
+            "validationServer": "unique:person_data,nic",
+            "class": "txt-nic",
+            "wrapperClass": "txt-nic-wrapper"
+        },
+        {
+            "name": "contact",
+            "label": "Contact",
+            "type": "text",
+            "placeholder": "Residential Contact",
+            "validation": "required|regex:/^[0-9]*$/",
+            "class": "txt-contact",
+            "wrapperClass": "txt-contact-wrapper"
+        },
+        {
+            "name": "email",
+            "label": "Email Address",
+            "type": "email",
+            "placeholder": "Email Address",
+            "validation": "required|email",
+            "class": "txt-email",
+            "wrapperClass": "txt-email-wrapper"
+        },
+        {
+            "name": "profession",
+            "label": "Profession",
+            "type": "text",
+            "placeholder": "Profession",
+            "validation": "required|alpha",
+            "class": "txt-profession",
+            "wrapperClass": "txt-profession-wrapper"
+        },
+        {
+            "name": "office_address",
+            "label": "Office Address",
+            "type": "text",
+            "placeholder": "Profession",
+            "validation": "required|alpha_dash",
+            "class": "txt-officeAddress",
+            "wrapperClass": "txt-officeAddress-wrapper"
+        }
+    ],
+    "submit": {
+        "label": "Create Account",
+        "class": "btn-create"
+    }
+  }

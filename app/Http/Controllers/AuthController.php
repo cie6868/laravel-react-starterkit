@@ -70,4 +70,12 @@ class AuthController extends Controller
         return Auth::guard();
     }
 
+    public function createAccount(Request $request)
+    {
+        (new JsonFormValidator(base_path('forms/createAccount.json')))->validate($request);
+
+        return response()->json([
+            'message' => 'User has been added',
+        ], 200);
+    }
 }
