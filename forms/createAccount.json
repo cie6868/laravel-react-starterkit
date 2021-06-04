@@ -74,6 +74,28 @@
             "validation": "required|alpha_dash",
             "class": "txt-officeAddress",
             "wrapperClass": "txt-officeAddress-wrapper"
+        },
+        {
+            "name": "role",
+            "label": "Role",
+            "type": "select",
+            "placeholder": "Select a job role",
+            "option": {
+                "key": "value",
+                "ase": "Associate SE",
+                "sse": "Senior SE"
+            },
+            "validation": "required",
+            "class": "txt-role",
+            "wrapperClass": "txt-role-wrapper"
+        },
+        {
+            "name": "condition",
+            "label": "I accept the terms and conditions",
+            "type": "checkbox",
+            "validation": "accepted",
+            "class": "check-condition",
+            "wrapperClass": "check-condition-wrapper"
         }
     ],
     "submit": {

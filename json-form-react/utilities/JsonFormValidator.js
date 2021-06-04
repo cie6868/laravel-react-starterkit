@@ -57,6 +57,9 @@ export default class JsonFormValidator {
       return this._max(ruleConditions, value);
     case 'regex':
       return this._regex(ruleConditions, value);
+    case 'accepted':
+      return this._accepted(value);
+
     default:
       // ignore unknown rules
       return null;
@@ -119,5 +122,13 @@ export default class JsonFormValidator {
     } else {
       return 'The value for __FIELD_NAME__ should contain only letters and spaces';
     }
+  }
+
+  _accepted(value) {
+    console.log(value);
+    if (value == 1 || value == true || value == 'on' || value == 'yes') {
+      return null;
+    } else
+      return '__FIELD_NAME__ has to be accepted';
   }
 }

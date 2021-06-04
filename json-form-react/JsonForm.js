@@ -52,23 +52,39 @@ const JsonForm = (props) => {
     const fieldId = `jsfr-field-${field.name}`;
     const fieldClasses = `jsfr-field ${field.class} ${formErrors[field.name] ? 'jsfr-field-error' : ''}`;
     const fieldWrapperClasses = `jsfr-field-wrapper ${field.wrapperClass} ${formErrors[field.name] ? 'jsfr-field-wrapper-error' : ''}`;
+    //check for drop down
+    if (field.type == 'select') {
+      return (
+        <div key={field.name} className={fieldWrapperClasses}>
+          <label htmlFor={fieldId}>
+            {field.label}
+          </label>
+          <select id={fieldId} name={field.name} className={fieldClasses} onChange={onChange}>
+            {Object.keys(field.option).map((keys) => {
+              return <option key={keys} value={field.option[keys]}>{field.option[keys]}</option>;
+            })}
+          </select>
+        </div>
+      );
+    }
+    else 
+      return (
+        <div key={field.name} className={fieldWrapperClasses}>
+          <label htmlFor={fieldId}>
+            {field.label}
+          </label>
 
-    return (
-      <div key={field.name} className={fieldWrapperClasses}>
-        <label htmlFor={fieldId}>
-          {field.label}
-        </label>
-
-        <input
-          id={fieldId}
-          type={field.type}
-          name={field.name}
-          value={formData[field.name] || ''}
-          placeholder={field.placeholder}
-          className={fieldClasses}
-          onChange={onChange}/>
-      </div>
-    );
+          <input
+            id={fieldId}
+            type={field.type}
+            name={field.name}
+            value={formData[field.name] || ''}
+            placeholder={field.placeholder}
+            className={fieldClasses}
+            onChange={onChange}
+          />
+        </div>
+      );
   });
 
   return (
