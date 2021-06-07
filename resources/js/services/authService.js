@@ -51,3 +51,12 @@ export const logout = async (token) => {
       store.dispatch(logoutAction());
     });
 };
+
+export const checkValidation = async (token,fullname, number, date, email, phone) => {
+  const response = await getAxiosInstance(token)
+    .post('checkValidation',{fullname, number, date, email, phone});
+
+ 
+  console.log(response);
+  
+};

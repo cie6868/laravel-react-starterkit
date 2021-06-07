@@ -70,4 +70,12 @@ class AuthController extends Controller
         return Auth::guard();
     }
 
+    public function checkValidation(Request $request)
+    {
+
+        return response()->json([
+            'message' => 'validation success',
+        ],200);
+    }
+
 }
