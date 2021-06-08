@@ -60,8 +60,8 @@ const JsonForm = (props) => {
             {field.label}
           </label>
           <select id={fieldId} name={field.name} className={fieldClasses} onChange={onChange}>
-            {Object.keys(field.options).map((keys) => {
-              return <option key={keys} value={field.options[keys]}>{field.options[keys]}</option>;
+            {Object.keys(field.options).map((keys,index) => {
+              return <option key={index} value={field.options[keys]}>{field.options[keys]}</option>;
             })}
           </select>
         </div>
