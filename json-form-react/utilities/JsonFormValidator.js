@@ -23,13 +23,16 @@ export default class JsonFormValidator {
 
   _validateField(fieldName, fieldValue) {
     let returnErrorText = null;
-
+    let errorText = null;
     const fieldDef = this.json.fields.find((f) => f.name === fieldName);
     for (const rule of fieldDef.validation.split('|')) {
-      const errorText = this._decipherAndValidate(rule, fieldValue);
+      if (fieldDef.options == undefined) {
+        errorText = this._decipherAndValidate(rule, fieldValue);
+      }else{
+        errorText = this._in(fieldValue,fieldDef.options);
+      }
       if (errorText) {
         returnErrorText = errorText.replace('__FIELD_NAME__', this._formatFieldName(fieldName));
-
         // halt at the first validation error for this field
         break;
       }
@@ -55,6 +58,8 @@ export default class JsonFormValidator {
       return this._min(ruleConditions, value);
     case 'max':
       return this._max(ruleConditions, value);
+    case 'regex':
+      return this._regex(ruleConditions, value);
     default:
       // ignore unknown rules
       return null;
@@ -110,4 +115,20 @@ export default class JsonFormValidator {
     return null;
   }
 
+  _regex(condition, value) {
+    const regexCondition = new RegExp(condition.replaceAll('/', ''));
+    if (regexCondition.test(value)) {
+      return null;
+    } else {
+      return 'The value for __FIELD_NAME__ should contain only letters and spaces';
+    }
+  }
+
+  _in(value, options) {
+    if (Object.values(options).includes(value)) {
+      return null;
+    } else {
+      return 'The value for __FIELD_NAME__ should contain values from the dropdown';
+    }
+  }
 }
