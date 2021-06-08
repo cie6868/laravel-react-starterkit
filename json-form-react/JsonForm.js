@@ -53,21 +53,21 @@ const JsonForm = (props) => {
     const fieldClasses = `jsfr-field ${field.class} ${formErrors[field.name] ? 'jsfr-field-error' : ''}`;
     const fieldWrapperClasses = `jsfr-field-wrapper ${field.wrapperClass} ${formErrors[field.name] ? 'jsfr-field-wrapper-error' : ''}`;
     //check for drop down
-    if (field.type == 'select') {
+    if (field.type === 'select') {
       return (
         <div key={field.name} className={fieldWrapperClasses}>
           <label htmlFor={fieldId}>
             {field.label}
           </label>
           <select id={fieldId} name={field.name} className={fieldClasses} onChange={onChange}>
-            {Object.keys(field.option).map((keys) => {
-              return <option key={keys} value={field.option[keys]}>{field.option[keys]}</option>;
+            {Object.keys(field.options).map((keys) => {
+              return <option key={keys} value={field.options[keys]}>{field.options[keys]}</option>;
             })}
           </select>
         </div>
       );
     }
-    else 
+    else
       return (
         <div key={field.name} className={fieldWrapperClasses}>
           <label htmlFor={fieldId}>

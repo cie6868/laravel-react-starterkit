@@ -80,7 +80,7 @@
             "label": "Role",
             "type": "select",
             "placeholder": "Select a job role",
-            "option": {
+            "options": {
                 "key": "value",
                 "ase": "Associate SE",
                 "sse": "Senior SE"
