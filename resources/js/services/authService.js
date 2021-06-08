@@ -57,5 +57,4 @@ export const accountCreation = async (token,fullname, address) => {
     .post('createAccount',{fullname,address});
 
   return response.data;
-  // console.log(response);
 };

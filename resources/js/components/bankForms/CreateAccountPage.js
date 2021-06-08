@@ -20,7 +20,6 @@ function CreateAccountPage() {
   if (!token) {
     return <Redirect to="/logout"/>;
   }
-  console.log('gets into the create account js');
 
   return (
     <section>
