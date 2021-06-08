@@ -93,7 +93,7 @@
             "name": "condition",
             "label": "I accept the terms and conditions",
             "type": "checkbox",
-            "validation": "accepted",
+            "validation": "required",
             "class": "check-condition",
             "wrapperClass": "check-condition-wrapper"
         }
