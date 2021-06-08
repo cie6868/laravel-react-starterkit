@@ -67,7 +67,7 @@ const JsonForm = (props) => {
         </div>
       );
     }
-    else
+    else{
       return (
         <div key={field.name} className={fieldWrapperClasses}>
           <label htmlFor={fieldId}>
@@ -85,6 +85,7 @@ const JsonForm = (props) => {
           />
         </div>
       );
+    }
   });
 
   return (
