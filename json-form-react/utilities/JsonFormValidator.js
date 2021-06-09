@@ -63,8 +63,10 @@ export default class JsonFormValidator {
       return this._validateEmail(value);
     case 'date':
       return this._validateDate(value);
-    case 'phone':
-      return this._validatePhoneNumber(value);
+    case 'phone-lk':
+      return this._phonelk(value);
+    case 'chars':
+      return this._checkSpecialChars(value);
     default:
       // ignore unknown rules
       return null;
@@ -157,61 +159,14 @@ export default class JsonFormValidator {
 
     const numbers = /^[0-9]+$/;
     if (!value.match(numbers)) {
+
       return 'Please Enter Only Number';
     }
 
     return null;
   }
 
-  _validateDate1(value) {
-    var dateformat = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
-
-    if (value.match(dateformat)) {
-
-      var opera1 = value.split('/');
-      var opera2 = value.split('-');
-      lopera1 = opera1.length;
-      lopera2 = opera2.length;
-
-      if (lopera1 > 1) {
-        var pdate = value.split('/');
-      }
-      else if (lopera2 > 1) {
-        var pdate = value.split('-');
-      }
-      var dd = parseInt(pdate[0]);
-      var mm = parseInt(pdate[1]);
-      var yy = parseInt(pdate[2]);
-
-      var ListofDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-      if (mm == 1 || mm > 2) {
-        if (dd > ListofDays[mm - 1]) {
-
-          return 'Invalid date format!';
-        }
-      }
-      if (mm == 2) {
-        var lyear = false;
-        if ((!(yy % 4) && yy % 100) || !(yy % 400)) {
-          lyear = true;
-        }
-        if ((lyear == false) && (dd >= 29)) {
-
-          return 'Invalid date format!';
-        }
-        if ((lyear == true) && (dd > 29)) {
-
-          return 'Invalid date format!';
-        }
-      }
-    }
-    else {
-
-      return 'Invalid date format!';
-    }
-  }
-
-  _validatePhoneNumber(value) {
+  _phonelk(value) {
 
     if (value.length < 10) {
 
@@ -227,6 +182,28 @@ export default class JsonFormValidator {
     }
     return null;
   }
+
+  _removeZero(value) {
+
+    var num1 = value.replace(/^0+/, '');
+
+    return num1;
+
+  }
+
+ 
+  _checkSpecialChars(value){
+
+    var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+
+    if(format.test(value)){
+
+      return 'remove Special charactors';
+    }
+
+    return null;
+  }
+
 
 
 }

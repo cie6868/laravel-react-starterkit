@@ -6,6 +6,8 @@ const JsonForm = (props) => {
 
   const [formData, setFormData] = useState({});
   const [formErrors, setFormErrors] = useState({});
+  
+
 
   useEffect(() => {
     const newState = {};
@@ -17,8 +19,11 @@ const JsonForm = (props) => {
       ...formData,
       ...newState,
     });
+
+    
   }, [props.json]);
 
+  
   const formClasses = `jsfr-form ${props.json.fieldClass}`;
   const submitLabel = props.json.submit ? props.json.submit.label : 'Submit';
   const submitClasses = props.json.submit ? props.json.submit.class : '';
@@ -29,6 +34,9 @@ const JsonForm = (props) => {
       [ev.target.name]: ev.target.value,
     });
   }, [formData]);
+
+  
+  
 
   const onSubmitClick = useCallback((ev) => {
     ev.preventDefault();
@@ -42,19 +50,22 @@ const JsonForm = (props) => {
     }
   }, [props.json, formData]);
 
+  
+  
+
   const errors = formErrors && formErrors._count > 0 && Object.entries(formErrors).map(([fieldName, errorText]) => {
     return !fieldName.startsWith('_') && (
       <li key={fieldName}>{errorText}</li>
     );
   });
 
-  const fields = props.json.fields && props.json.fields.map((field) => {
+  const fields = props.json.fields && props.json.fields.map((field, index) => {
     const fieldId = `jsfr-field-${field.name}`;
     const fieldClasses = `jsfr-field ${field.class} ${formErrors[field.name] ? 'jsfr-field-error' : ''}`;
     const fieldWrapperClasses = `jsfr-field-wrapper ${field.wrapperClass} ${formErrors[field.name] ? 'jsfr-field-wrapper-error' : ''}`;
 
     return (
-      <div key={field.name} className={fieldWrapperClasses}>
+      <div key={index} className={fieldWrapperClasses}>
         <label htmlFor={fieldId}>
           {field.label}
         </label>

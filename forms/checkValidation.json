@@ -3,11 +3,20 @@
     "class": "checkValidation-form",
     "fields": [
         {
-            "name": "fullname",
-            "label": "Full Name",
-            "type": "text",
-            "placeholder": "fullname",
-            "validation": "required|letters",
+            "name": "gender",
+            "label": "female",
+            "type": "radio",
+            "value": "female",
+            "validation": "required",
+            "class": "txt-fullname",
+            "wrapperClass": "txt-fullname-wrapper"
+        },
+        {
+            "name": "gender",
+            "label": "male",
+            "type": "radio",
+            "value": "male",
+            "validation": "required",
             "class": "txt-fullname",
             "wrapperClass": "txt-fullname-wrapper"
         },
@@ -16,7 +25,7 @@
             "label": "Number Only",
             "type": "text",
             "placeholder": "Number Only",
-            "validation": "required|numbers",
+            "validation": "required|chars|phone-lk",
             "class": "txt-numbers",
             "wrapperClass": "txt-number-wrapper"
         },
@@ -43,7 +52,7 @@
             "label": "phone number",
             "type": "number",
             "placeholder": "Phone Number",
-            "validation": "required|phone",
+            "validation": "required|chars|phone-lk|",
             "class": "txt-phone",
             "wrapperClass": "txt-number-wrapper"
         }
