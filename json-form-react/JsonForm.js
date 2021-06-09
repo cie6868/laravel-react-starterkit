@@ -53,24 +53,29 @@ const JsonForm = (props) => {
     const fieldClasses = `jsfr-field ${field.class} ${formErrors[field.name] ? 'jsfr-field-error' : ''}`;
     const fieldWrapperClasses = `jsfr-field-wrapper ${field.wrapperClass} ${formErrors[field.name] ? 'jsfr-field-wrapper-error' : ''}`;
 
-    if (field.type == 'radio') {
+    if (field.type === 'radio') {
       return (
         <div key={field.name} className={fieldWrapperClasses}>
           <label htmlFor={fieldId}>
             {field.label}
           </label>
-          <label >
-            <br/>
-                male    female
-            <br/>
-
-          </label>
+          
           {Object.keys(field.option).map((keys) => {
+            return [
+              <>
+                <label key={keys} htmlFor={field.option[keys]}>
+                  {field.option[keys]}
+                </label>
+                <input type="radio"  id={field.option[keys]} name="gender" value={field.option[keys]}/>
+              </>,
+            ];
+          })} 
+          {/* {Object.keys(field.option).map((keys) => {
 
             return (
               <input type="radio" key={keys} id={field.option[keys]} name="gender" value={field.option[keys]}/>
             );
-          })}  
+          })}   */}
           
         </div>
       );
