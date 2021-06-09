@@ -20,6 +20,15 @@
             "validation": "required|min:3",
             "class": "txt-password",
             "wrapperClass": "txt-password-wrapper"
+        },
+        {
+            "name": "email",
+            "label": "email",
+            "type": "email",
+            "placeholder": "email ID",
+            "validation": "required|min:3",
+            "class": "txt-password",
+            "wrapperClass": "txt-password-wrapper"
         }
     ],
     "submit": {
