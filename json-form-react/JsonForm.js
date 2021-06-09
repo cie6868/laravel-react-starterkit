@@ -60,13 +60,13 @@ const JsonForm = (props) => {
             {field.label}
           </label>
           
-          {Object.keys(field.option).map((keys) => {
+          {Object.keys(field.options).map((keys,index) => {
             return [
               <>
-                <label key={keys} htmlFor={field.option[keys]}>
-                  {field.option[keys]}
+                <label key={keys} htmlFor={field.options[keys]}>
+                  {field.options[keys]}
                 </label>
-                <input type="radio"  id={field.option[keys]} name="gender" value={field.option[keys]}/>
+                <input type="radio" key={index} id={field.options[index]} name="gender" value={field.options[keys]}/>
               </>,
             ];
           })} 
