@@ -52,7 +52,7 @@
             "label": "phone number",
             "type": "number",
             "placeholder": "Phone Number",
-            "validation": "required|phone-lk|",
+            "validation": "required|phone-lk",
             "class": "txt-phone",
             "wrapperClass": "txt-number-wrapper"
         }
