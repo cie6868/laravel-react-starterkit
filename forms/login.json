@@ -20,6 +20,18 @@
             "validation": "required|min:3",
             "class": "txt-password",
             "wrapperClass": "txt-password-wrapper"
+        },
+        {
+            "name": "gender",
+            "label": "Gender",
+            "type": "radio",
+            "options": {
+                "m": "Male",
+                "f": "Female"
+            },
+            "validation": "required",
+            "class": "txt-role",
+            "wrapperClass": "txt-role-wrapper"
         }
     ],
     "submit": {
