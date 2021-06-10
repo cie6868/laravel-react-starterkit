@@ -65,8 +65,6 @@ export default class JsonFormValidator {
       return this._validateDate(value);
     case 'phone-lk':
       return this._phonelk(value);
-    case 'chars':
-      return this._checkSpecialChars(value);
     default:
       // ignore unknown rules
       return null;
@@ -168,17 +166,16 @@ export default class JsonFormValidator {
 
   _phonelk(value) {
 
-    if (value.length < 10) {
+    const getNum = this._removeZero(value);
+
+    if (getNum.length < 9) {
 
       return 'Please enter 10 numbers';
     }
-    else {
+    else if (getNum.length > 9)  {
 
-      if (value.length > 10) {
+      return 'Please enter only 10 numbers';
 
-        return 'Please enter only 10 numbers';
-
-      }
     }
     return null;
   }
@@ -190,21 +187,6 @@ export default class JsonFormValidator {
     return num1;
 
   }
-
- 
-  _checkSpecialChars(value){
-
-    var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-
-    if(format.test(value)){
-
-      return 'remove Special charactors';
-    }
-
-    return null;
-  }
-
-
 
 }
 
