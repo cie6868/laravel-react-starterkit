@@ -67,7 +67,7 @@ const JsonForm = (props) => {
         </div>
       );
     }
-    //check for radio
+    //check for radio button
     else if(field.type === 'radio') {
       {Object.keys(field.options).map((keys,index) => {
         return [
@@ -75,7 +75,7 @@ const JsonForm = (props) => {
             <label key={keys} htmlFor={field.options[keys]}>
               {field.options[keys]}
             </label>
-            <input type="radio" key={index} id={field.options[index]} name="gender" value={field.options[keys]}/>
+            <input type="radio" key={index} id={field.options[index]} name="gender" value={field.options[keys]} onChange={onChange}/>
           </>,
         ];
       });} 
