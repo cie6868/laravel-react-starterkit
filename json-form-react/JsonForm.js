@@ -52,35 +52,35 @@ const JsonForm = (props) => {
     const fieldId = `jsfr-field-${field.name}`;
     const fieldClasses = `jsfr-field ${field.class} ${formErrors[field.name] ? 'jsfr-field-error' : ''}`;
     const fieldWrapperClasses = `jsfr-field-wrapper ${field.wrapperClass} ${formErrors[field.name] ? 'jsfr-field-wrapper-error' : ''}`;
-
-    if (field.type === 'radio') {
+    //check for drop down
+    if (field.type === 'select') {
       return (
         <div key={field.name} className={fieldWrapperClasses}>
           <label htmlFor={fieldId}>
             {field.label}
           </label>
-          
-          {Object.keys(field.options).map((keys,index) => {
-            return [
-              <>
-                <label key={keys} htmlFor={field.options[keys]}>
-                  {field.options[keys]}
-                </label>
-                <input type="radio" key={index} id={field.options[index]} name="gender" value={field.options[keys]}/>
-              </>,
-            ];
-          })} 
-          {/* {Object.keys(field.option).map((keys) => {
-
-            return (
-              <input type="radio" key={keys} id={field.option[keys]} name="gender" value={field.option[keys]}/>
-            );
-          })}   */}
-          
+          <select id={fieldId} name={field.name} className={fieldClasses} onChange={onChange}>
+            {Object.keys(field.options).map((keys,index) => {
+              return <option key={index} value={field.options[keys]}>{field.options[keys]}</option>;
+            })}
+          </select>
         </div>
       );
     }
-    else 
+    //check for radio
+    else if(field.type === 'radio') {
+      {Object.keys(field.options).map((keys,index) => {
+        return [
+          <>
+            <label key={keys} htmlFor={field.options[keys]}>
+              {field.options[keys]}
+            </label>
+            <input type="radio" key={index} id={field.options[index]} name="gender" value={field.options[keys]}/>
+          </>,
+        ];
+      });} 
+    }
+    else{
       return (
         <div key={field.name} className={fieldWrapperClasses}>
           <label htmlFor={fieldId}>
@@ -98,6 +98,7 @@ const JsonForm = (props) => {
           />
         </div>
       );
+    }
   });
 
   return (
