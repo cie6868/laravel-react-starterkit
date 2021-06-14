@@ -18,9 +18,9 @@
 
 7) validation - this value is a function that return a string errort or null if the feild is valid
 
-8) validation server - it needs to validate on the server in addtion to on the client
+8) validation_server - it needs to validate on the server in addtion to on the client
 
-9) class -
+9) class - 
 
 10) wrapper class - Its provide all the of the componnets attribute and properties as props on
 
@@ -29,34 +29,33 @@ the react component
 
 ## validation
 
-1) required - this keeps a list of required properties 
+1) required - this validates that the field has been provided and cannot be empty.
 
-2) min
-        
-3) letters
+2) min - this is the constraint to be put on the value and represents minimum acceptable value. 
 
-4) mixedcase
+3) max - this is the constraint to be put on the value and represents maximum acceptable value. 
 
-5) numbers
+4) Item - defines what appears in the array 
 
-6) uncompromised
+5) optional - property should be considered optional 
 
-7) max
 
 
 ## field type 
 
-1) text 
+1) text - it is allow to enter basic values
 
-2) email 
+2) email - it a validation to only accept email addresses
 
-3) password
+3) password - it doesn't display what the user types
 
-4) button 
+4) button - it requires a user tp perform an action
 
-5) checkbox 
+5) checkbox - it can provide a list of choices 
 
-6) radio button 
+6) radio - it can allows the user to select a value from a predefined set of choices
+
+
 
 
 
