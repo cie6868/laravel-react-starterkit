@@ -58,3 +58,9 @@ export const accountCreation = async (token,fullname, address) => {
 
   return response.data;
 };
+
+export const checkValidation = async (token, gender, number, date, email, phone) => {
+  await getAxiosInstance(token)
+    .post('checkValidation',{gender, number, date, email, phone});
+  
+};

@@ -4,6 +4,8 @@ import LoginPage from './auth/LoginPage';
 import LogoutPage from './auth/LogoutPage';
 import HomePage from './HomePage';
 import CreateAccountPage from './bankForms/CreateAccountPage';
+import CheckValidationPage from './CheckValidationPage';
+
 function App() {
 
   return (
@@ -17,6 +19,9 @@ function App() {
         </Route>
         <Route path="/create">
           <CreateAccountPage/>
+        </Route>
+        <Route path="/check">
+          <CheckValidationPage/>
         </Route>
         <Route path="/">
           <HomePage/>

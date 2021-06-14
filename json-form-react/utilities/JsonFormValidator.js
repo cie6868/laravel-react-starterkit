@@ -60,6 +60,16 @@ export default class JsonFormValidator {
       return this._max(ruleConditions, value);
     case 'regex':
       return this._regex(ruleConditions, value);
+    case 'letters':
+      return this._validateLetterOnly(value);
+    case 'numbers':
+      return this._validateNumbersOnly(value);
+    case 'email':
+      return this._validateEmail(value);
+    case 'date':
+      return this._validateDate(value);
+    case 'phone-lk':
+      return this._phonelk(value);
     default:
       // ignore unknown rules
       return null;
@@ -115,6 +125,74 @@ export default class JsonFormValidator {
     return null;
   }
 
+  _validateEmail(value) {
+
+    const validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+    if (!value.match(validRegex)) {
+
+      return 'invaid email type';
+    }
+    return null;
+  }
+
+
+  _validateDate(value) {
+
+    let isValidDate = Date.parse(value);
+
+    if (isNaN(isValidDate)) {
+      return 'Invalid Date Format';
+    }
+    return null;
+  }
+
+
+  _validateLetterOnly(value) {
+
+    const regEx = /^[A-Za-z]+$/;
+    if (!value.match(regEx)) {
+
+      return 'Please Enter Alphabetic Letters Only';
+    }
+    return null;
+  }
+
+  _validateNumbersOnly(value) {
+
+    const numbers = /^[0-9]+$/;
+    if (!value.match(numbers)) {
+
+      return 'Please Enter Only Number';
+    }
+
+    return null;
+  }
+
+  _phonelk(value) {
+
+    const getNum = this._removeZero(value);
+
+    if (getNum.length < 9) {
+
+      return 'Please enter 10 numbers';
+    }
+    else if (getNum.length > 9)  {
+
+      return 'Please enter only 10 numbers';
+
+    }
+    return null;
+  }
+
+  _removeZero(value) {
+
+    var num1 = value.replace(/^0+/, '');
+
+    return num1;
+
+  }
+
   _regex(condition, value) {
     const regexCondition = new RegExp(condition.replaceAll('/', ''));
     if (regexCondition.test(value)) {
@@ -132,3 +210,5 @@ export default class JsonFormValidator {
     }
   }
 }
+
+

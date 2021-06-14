@@ -21,6 +21,7 @@ function HomePage() {
       <h1>You are {token ? 'logged in' : 'logged out'}.</h1>
       {username && <p>Username: {username}</p>}
       {!token && <Link to="/login">Login</Link>}
+      {token && <Link to="/check">Check</Link>}
       {token && <Link to="/logout">Logout</Link>}
     </section>
   );
