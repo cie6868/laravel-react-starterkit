@@ -6,9 +6,9 @@
             "name": "first_name",
             "label": "First Name",
             "type": "text",
-            "placeholder": "fullname",
-            "value": "Test",
+            "placeholder": "First Name",
             "validation": "required|alpha|min:3",
+            "defaultValue": "Test",
             "class": "txt-first-name",
             "wrapperClass": "txt-first-name-wrapper"
         },
@@ -16,9 +16,9 @@
             "name": "last_name",
             "label": "Last Name",
             "type": "text",
-            "placeholder": "fullname",
-            "value": "Test",
+            "placeholder": "First Name",
             "validation": "required|alpha|min:3",
+            "defaultValue": "Test",
             "class": "txt-last-name",
             "wrapperClass": "txt-last-name-wrapper"
         },
@@ -27,8 +27,8 @@
             "label": "Address",
             "type": "text",
             "placeholder": "Address",
-            "value": "Test",
             "validation": "required|min:3",
+            "defaultValue": "Test",
             "class": "txt-address",
             "wrapperClass": "txt-address-wrapper"
         },
@@ -37,8 +37,8 @@
             "label": "Date of Birth",
             "type": "date",
             "placeholder": "Date of Birth",
-            "value": "2021-06-15",
             "validation": "required|date",
+            "defaultValue": "2021-06-15",
             "class": "txt-dob",
             "wrapperClass": "txt-dob-wrapper"
         },
@@ -47,8 +47,8 @@
             "label": "NIC Number",
             "type": "text",
             "placeholder": "NIC Number",
-            "value": "199312510011",
             "validation": "required|nic_lk",
+            "defaultValue": "199312510011",
             "class": "txt-nic",
             "wrapperClass": "txt-nic-wrapper"
         },
@@ -57,8 +57,8 @@
             "label": "Email Address",
             "type": "email",
             "placeholder": "Email Address",
-            "value": "chamath@dxdy.tech",
             "validation": "required|email",
+            "defaultValue": "chamath@dxdy.tech",
             "class": "txt-email",
             "wrapperClass": "txt-email-wrapper"
         },
@@ -68,7 +68,7 @@
             "type": "text",
             "placeholder": "Phone Number",
             "validation": "phone_lk",
-            "value": "0777123123",
+            "defaultValue": "0777123123",
             "class": "txt-phone",
             "wrapperClass": "txt-phone-wrapper"
         },
@@ -84,8 +84,8 @@
                 "ba": "Business Analyst",
                 "pm": "Project Manager"
             },
-            "value": "qa",
             "validation": "required",
+            "defaultValue": "qa",
             "class": "drp-role",
             "wrapperClass": "drp-role-wrapper"
         },
@@ -97,8 +97,8 @@
                 "f": "Female",
                 "m": "Male"
             },
-            "value": "m",
             "validation": "required",
+            "defaultValue": "f",
             "class": "rad-gender",
             "wrapperClass": "rad-gender-wrapper"
         },
@@ -107,8 +107,8 @@
             "label": "Experience (in years)",
             "type": "number",
             "placeholder": "0",
-            "value": "14",
             "validation": "required|numeric|gt:0|lt:15",
+            "defaultValue": 14,
             "class": "txt-exp",
             "wrapperClass": "txt-exp-wrapper"
         },
@@ -121,8 +121,8 @@
                 "1A2B3C": "",
                 "QWERTY1": ""
             },
-            "value": "1A2B3C",
             "validation": "required",
+            "defaultValue": "1A2B3C",
             "class": "txt-invite-code",
             "wrapperClass": "txt-invite-code-wrapper"
         },
@@ -130,8 +130,8 @@
             "name": "terms_and_conditions",
             "label": "I accept the terms and conditions",
             "type": "checkbox",
-            "value": "accepted",
             "validation": "required",
+            "defaultValue": "accepted",
             "class": "chk-toc",
             "wrapperClass": "chk-toc-wrapper"
         }

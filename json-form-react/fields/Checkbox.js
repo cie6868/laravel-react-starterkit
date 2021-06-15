@@ -20,7 +20,7 @@ const Checkbox = (props) => {
         id={fieldId}
         type="checkbox"
         name={field.name}
-        value={field.value}
+        value="true"
         checked={isChecked}
         className={fieldClasses}
         onChange={onChange}/>

@@ -22,8 +22,8 @@ const JsonForm = (props) => {
 
     // populate with default values if empty
     props.json.fields.forEach((field) => {
-      if (newState[field.name] === '') {
-        newState[field.name] = field.value ? field.value.toString() : '';
+      if (typeof newState[field.name] === 'undefined') {
+        newState[field.name] = field.defaultValue ? field.defaultValue.toString() : '';
       }
     });
 
