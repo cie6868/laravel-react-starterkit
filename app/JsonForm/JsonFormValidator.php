@@ -31,16 +31,56 @@ class JsonFormValidator
             $fieldName = $fieldDef['name'];
 
             if (isset($fieldDef['validation'])) {
-                $fieldRules = $fieldDef['validation'];
-                if (isset($fieldDef['validationServer'])) {
-                    $fieldRules .= '|' . $fieldDef['validationServer'];
+                $fieldRules = explode('|', $fieldDef['validation']);
+
+                $fieldRulesFinal = [];
+                foreach ($fieldRules as $rule) {
+                    if ($this->checkRulePossibleInLaravel($rule)) {
+                        array_push($fieldRulesFinal, $rule);
+                    }
                 }
 
-                $formRules[$fieldName] = $fieldRules;
+                // validate from available options
+                if (isset($fieldDef['options'])) {
+                    array_push($fieldRulesFinal, $this->generateOptionsValidation($fieldDef['options']));
+                }
+
+                // server-only validations
+                if (isset($fieldDef['validationServer'])) {
+                    array_push($fieldRulesFinal, $fieldDef['validationServer']);
+                }
+
+                $formRules[$fieldName] = implode('|', $fieldRulesFinal);
             }
         }
 
         return $formRules;
+    }
+
+    /**
+     * Some rules are not implemented in Laravel. List those here.
+     */
+    private function checkRulePossibleInLaravel($rule)
+    {
+        $impossible = [
+            'nic_lk',
+            'phone_lk'
+        ];
+
+        return !in_array($rule, $impossible);
+    }
+
+    /**
+     * Some rules need to be reformatted to work in laravel. List those here.
+     */
+    private function generateOptionsValidation($options)
+    {
+        $validOptions = [];
+        foreach ($options as $value => $label) {
+            array_push($validOptions, $value);
+        }
+
+        return 'in:' . implode(',', $validOptions);
     }
 
 }

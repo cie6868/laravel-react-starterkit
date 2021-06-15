@@ -45,22 +45,16 @@ export const me = async (token) => {
 };
 
 export const logout = async (token) => {
-  return getAxiosInstance(token)
-    .get('logout')
-    .then(() => {
-      store.dispatch(logoutAction());
-    });
+  getAxiosInstance(token)
+    .get('logout');
+
+  // clear the token even if request fails
+  store.dispatch(logoutAction());
 };
 
-export const accountCreation = async (token,fullname, address) => {
-  const response = await getAxiosInstance(token)
-    .post('createAccount',{fullname,address});
-
-  return response.data;
-};
-
-export const checkValidation = async (token, gender, number, date, email, phone) => {
+export const register = async (token, values) => {
   await getAxiosInstance(token)
-    .post('checkValidation',{gender, number, date, email, phone});
-  
+    .post('register', { ...values });
+
+  // do nothing with response as registration form is only for validation tests
 };
