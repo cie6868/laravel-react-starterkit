@@ -18,7 +18,7 @@ const Checkbox = (props) => {
     <div className={fieldWrapperClasses}>
       <input
         id={fieldId}
-        type={field.type}
+        type="checkbox"
         name={field.name}
         value={field.value}
         checked={isChecked}

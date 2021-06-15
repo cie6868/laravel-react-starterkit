@@ -7,6 +7,7 @@ const Radio = (props) => {
   const fieldId = `jsfr-field-${field.name}`;
   const fieldClasses = `jsfr-field ${field.class} ${currentError ? 'jsfr-field-error' : ''}`;
   const fieldWrapperClasses = `jsfr-field-wrapper ${field.wrapperClass} ${currentError ? 'jsfr-field-wrapper-error' : ''}`;
+  const radioWrapperClass = 'jsfr-field-radio';
 
   const onChange = useCallback((ev) => {
     onValueChange(ev.target.name, ev.target.value);
@@ -17,7 +18,6 @@ const Radio = (props) => {
       <p>{field.label}</p>
 
       {Object.keys(field.options).map((value) => {
-        const radioWrapperClass = 'jsfr-field-radio';
         const radioId = `${fieldId}-${value}`;
         const isChecked = value === currentValue;
 
@@ -25,7 +25,7 @@ const Radio = (props) => {
           <div key={value} className={radioWrapperClass}>
             <input
               id={radioId}
-              type={field.type}
+              type="radio"
               name={field.name}
               value={value}
               checked={isChecked}

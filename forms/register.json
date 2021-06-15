@@ -107,7 +107,7 @@
             "label": "Experience (in years)",
             "type": "number",
             "placeholder": "0",
-            "value": "15",
+            "value": "14",
             "validation": "required|numeric|gt:0|lt:15",
             "class": "txt-exp",
             "wrapperClass": "txt-exp-wrapper"
@@ -116,12 +116,12 @@
             "name": "invite_code",
             "label": "Invite Code",
             "type": "text",
-            "placeholder": "Role",
-            "value": "12345",
+            "placeholder": "Invite Code",
             "options": {
                 "1A2B3C": "",
                 "QWERTY1": ""
             },
+            "value": "1A2B3C",
             "validation": "required",
             "class": "txt-invite-code",
             "wrapperClass": "txt-invite-code-wrapper"
