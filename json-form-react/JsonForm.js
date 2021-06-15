@@ -11,17 +11,27 @@ const JsonForm = (props) => {
   const [formData, setFormData] = useState({});
   const [formErrors, setFormErrors] = useState({});
 
+  // populate fields initially
   useEffect(() => {
     const newState = {};
+
+    // populate with current values
+    props.values && Object.entries(props.values).map(([fieldName, fieldValue]) => {
+      newState[fieldName] = fieldValue ? fieldValue.toString() : '';
+    });
+
+    // populate with default values if empty
     props.json.fields.forEach((field) => {
-      newState[field.name] = field.value ? field.value : '';
+      if (newState[field.name] === '') {
+        newState[field.name] = field.value ? field.value.toString() : '';
+      }
     });
 
     setFormData({
       ...formData,
       ...newState,
     });
-  }, [props.json]);
+  }, [props.json, props.values]);
 
   const formClasses = `jsfr-form ${props.json.fieldClass}`;
   const submitLabel = props.json.submit ? props.json.submit.label : 'Submit';
@@ -111,6 +121,7 @@ const JsonForm = (props) => {
 
 JsonForm.propTypes = {
   json: PropTypes.object,
+  values: PropTypes.object,
   onSubmit: PropTypes.func,
 };
 

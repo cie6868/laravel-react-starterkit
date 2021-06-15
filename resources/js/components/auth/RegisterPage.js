@@ -6,6 +6,21 @@ import { register } from '../../services/authService';
 
 const registerJson = require('../../../../forms/register.json');
 
+const formExistingValues = {
+  first_name: 'John',
+  last_name: 'Doe',
+  address: 'Road, City',
+  date_of_birth: '2020-01-01',
+  nic: '199312341234',
+  email: 'john@mailinator.com',
+  phone: '0777123123',
+  role: 'pm',
+  gender: 'm',
+  years_of_experience: 5,
+  invite_code: 'QWERTY1',
+  terms_and_conditions: true,
+};
+
 function RegisterPage() {
 
   const token = useSelector((state) => state.auth.token);
@@ -23,7 +38,7 @@ function RegisterPage() {
     <section>
       <h1>Register (Validation Test)</h1>
 
-      <JsonForm json={registerJson} onSubmit={onSubmit}/>
+      <JsonForm json={registerJson} values={formExistingValues} onSubmit={onSubmit}/>
     </section>
   );
 

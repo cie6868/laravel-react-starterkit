@@ -4,7 +4,7 @@ import React, { useCallback } from 'react';
 const Checkbox = (props) => {
   const {field, currentValue, currentError, onValueChange} = props;
 
-  const isChecked = field.value === currentValue;
+  const isChecked = currentValue ? true : false;
 
   const fieldId = `jsfr-field-${field.name}`;
   const fieldClasses = `jsfr-field ${field.class} ${currentError ? 'jsfr-field-error' : ''}`;
