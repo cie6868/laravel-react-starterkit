@@ -7,7 +7,7 @@
             "label": "Full Name",
             "type": "text",
             "placeholder": "fullname",
-            "validation": "required|regex:/^[a-zA-Z ]*$/",
+            "validation": "required|alpha|min:3",
             "class": "txt-fullname",
             "wrapperClass": "txt-fullname-wrapper"
         },
@@ -16,7 +16,7 @@
             "label": "Address",
             "type": "text",
             "placeholder": "Residential Address",
-            "validation": "required|alpha_dash",
+            "validation": "required|alpha_dash|min:3",
             "class": "txt-address",
             "wrapperClass": "txt-address-wrapper"
         },
@@ -25,28 +25,18 @@
             "label": "Date of Birth",
             "type": "date",
             "placeholder": "Date of Birth",
-            "validation": "required|alpha_dash|min:3",
-            "class": "txt-address",
-            "wrapperClass": "date-dob-wrapper"
+            "validation": "required|date",
+            "class": "txt-dob",
+            "wrapperClass": "txt-dob-wrapper"
         },
         {
             "name": "nic",
-            "label": "NIC",
+            "label": "NIC Number",
             "type": "text",
             "placeholder": "NIC Number",
-            "validation": "required|alpha_num",
-            "validationServer": "unique:person_data,nic",
+            "validation": "required|nic_lk",
             "class": "txt-nic",
             "wrapperClass": "txt-nic-wrapper"
-        },
-        {
-            "name": "contact",
-            "label": "Contact",
-            "type": "text",
-            "placeholder": "Residential Contact",
-            "validation": "required|regex:/^[0-9]*$/",
-            "class": "txt-contact",
-            "wrapperClass": "txt-contact-wrapper"
         },
         {
             "name": "email",
@@ -58,44 +48,37 @@
             "wrapperClass": "txt-email-wrapper"
         },
         {
-            "name": "profession",
-            "label": "Profession",
+            "name": "phone",
+            "label": "Phone Number",
             "type": "text",
-            "placeholder": "Profession",
-            "validation": "required|alpha",
-            "class": "txt-profession",
-            "wrapperClass": "txt-profession-wrapper"
-        },
-        {
-            "name": "office_address",
-            "label": "Office Address",
-            "type": "text",
-            "placeholder": "Profession",
-            "validation": "required|alpha_dash",
-            "class": "txt-officeAddress",
-            "wrapperClass": "txt-officeAddress-wrapper"
+            "placeholder": "Phone Number",
+            "validation": "required|phone_lk",
+            "class": "txt-phone",
+            "wrapperClass": "txt-phone-wrapper"
         },
         {
             "name": "role",
             "label": "Role",
-            "type": "select",
-            "placeholder": "Select a job role",
+            "type": "radio",
+            "placeholder": "Role",
             "options": {
-                "key": "value",
-                "ase": "Associate SE",
-                "sse": "Senior SE"
+                "dev": "Developer",
+                "tl": "Team Lead",
+                "qa": "Quality Assurance",
+                "ba": "Business Analyst",
+                "pm": "Project Manager"
             },
             "validation": "required",
-            "class": "txt-role",
-            "wrapperClass": "txt-role-wrapper"
+            "class": "rad-role",
+            "wrapperClass": "rad-role-wrapper"
         },
         {
-            "name": "condition",
+            "name": "toc_accepted",
             "label": "I accept the terms and conditions",
             "type": "checkbox",
             "validation": "required",
-            "class": "check-condition",
-            "wrapperClass": "check-condition-wrapper"
+            "class": "chk-toc",
+            "wrapperClass": "chk-toc-wrapper"
         }
     ],
     "submit": {
