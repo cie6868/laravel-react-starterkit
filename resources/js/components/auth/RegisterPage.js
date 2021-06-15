@@ -12,8 +12,7 @@ function RegisterPage() {
 
   const onSubmit = useCallback((values) => {
     register(token, values);
-  }, []);
-
+  }, [token]);
 
   // if logged out
   if (!token) {
@@ -23,6 +22,7 @@ function RegisterPage() {
   return (
     <section>
       <h1>Register (Validation Test)</h1>
+
       <JsonForm json={registerJson} onSubmit={onSubmit}/>
     </section>
   );
