@@ -3,28 +3,41 @@
     "class": "createAccount-form",
     "fields": [
         {
-            "name": "fullname",
-            "label": "Full Name",
+            "name": "first_name",
+            "label": "First Name",
             "type": "text",
             "placeholder": "fullname",
+            "value": "Test",
             "validation": "required|alpha|min:3",
-            "class": "txt-fullname",
-            "wrapperClass": "txt-fullname-wrapper"
+            "class": "txt-first-name",
+            "wrapperClass": "txt-first-name-wrapper"
+        },
+        {
+            "name": "last_name",
+            "label": "Last Name",
+            "type": "text",
+            "placeholder": "fullname",
+            "value": "Test",
+            "validation": "required|alpha|min:3",
+            "class": "txt-last-name",
+            "wrapperClass": "txt-last-name-wrapper"
         },
         {
             "name": "address",
             "label": "Address",
             "type": "text",
-            "placeholder": "Residential Address",
-            "validation": "required|alpha_dash|min:3",
+            "placeholder": "Address",
+            "value": "Test",
+            "validation": "required|min:3",
             "class": "txt-address",
             "wrapperClass": "txt-address-wrapper"
         },
         {
-            "name": "dob",
+            "name": "date_of_birth",
             "label": "Date of Birth",
             "type": "date",
             "placeholder": "Date of Birth",
+            "value": "2021-06-15",
             "validation": "required|date",
             "class": "txt-dob",
             "wrapperClass": "txt-dob-wrapper"
@@ -34,6 +47,7 @@
             "label": "NIC Number",
             "type": "text",
             "placeholder": "NIC Number",
+            "value": "199312510011",
             "validation": "required|nic_lk",
             "class": "txt-nic",
             "wrapperClass": "txt-nic-wrapper"
@@ -43,24 +57,27 @@
             "label": "Email Address",
             "type": "email",
             "placeholder": "Email Address",
+            "value": "chamath@dxdy.tech",
             "validation": "required|email",
             "class": "txt-email",
             "wrapperClass": "txt-email-wrapper"
         },
         {
             "name": "phone",
-            "label": "Phone Number",
+            "label": "Phone Number (optional)",
             "type": "text",
             "placeholder": "Phone Number",
-            "validation": "required|phone_lk",
+            "validation": "phone_lk",
+            "value": "0777123123",
             "class": "txt-phone",
             "wrapperClass": "txt-phone-wrapper"
         },
         {
             "name": "role",
             "label": "Role",
-            "type": "radio",
+            "type": "select",
             "placeholder": "Role",
+            "value": "qa",
             "options": {
                 "dev": "Developer",
                 "tl": "Team Lead",
@@ -69,13 +86,51 @@
                 "pm": "Project Manager"
             },
             "validation": "required",
-            "class": "rad-role",
-            "wrapperClass": "rad-role-wrapper"
+            "class": "drp-role",
+            "wrapperClass": "drp-role-wrapper"
         },
         {
-            "name": "toc_accepted",
+            "name": "gender",
+            "label": "Gender",
+            "type": "radio",
+            "options": {
+                "f": "Female",
+                "m": "Male"
+            },
+            "value": "m",
+            "validation": "required",
+            "class": "rad-gender",
+            "wrapperClass": "rad-gender-wrapper"
+        },
+        {
+            "name": "years_of_experience",
+            "label": "Experience (in years)",
+            "type": "number",
+            "placeholder": "0",
+            "value": "15",
+            "validation": "required|numeric|gt:0|lt:15",
+            "class": "txt-exp",
+            "wrapperClass": "txt-exp-wrapper"
+        },
+        {
+            "name": "invite_code",
+            "label": "Invite Code",
+            "type": "text",
+            "placeholder": "Role",
+            "value": "12345",
+            "options": {
+                "1A2B3C": "",
+                "QWERTY1": ""
+            },
+            "validation": "required",
+            "class": "txt-invite-code",
+            "wrapperClass": "txt-invite-code-wrapper"
+        },
+        {
+            "name": "terms_and_conditions",
             "label": "I accept the terms and conditions",
             "type": "checkbox",
+            "value": "accepted",
             "validation": "required",
             "class": "chk-toc",
             "wrapperClass": "chk-toc-wrapper"

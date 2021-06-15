@@ -1,13 +1,15 @@
+import Checkbox from './fields/Checkbox';
 import PropTypes from 'prop-types';
 import React, { useCallback, useEffect, useState } from 'react';
+import Input from './fields/Input';
 import JsonFormValidator from './utilities/JsonFormValidator';
+import Radio from './fields/Radio';
+import Select from './fields/Select';
 
 const JsonForm = (props) => {
 
   const [formData, setFormData] = useState({});
   const [formErrors, setFormErrors] = useState({});
-  
-
 
   useEffect(() => {
     const newState = {};
@@ -19,24 +21,18 @@ const JsonForm = (props) => {
       ...formData,
       ...newState,
     });
-
-    
   }, [props.json]);
 
-  
   const formClasses = `jsfr-form ${props.json.fieldClass}`;
   const submitLabel = props.json.submit ? props.json.submit.label : 'Submit';
   const submitClasses = props.json.submit ? props.json.submit.class : '';
 
-  const onChange = useCallback((ev) => {
+  const onValueChange = useCallback((fieldName, newValue) => {
     setFormData({
       ...formData,
-      [ev.target.name]: ev.target.value,
+      [fieldName]: newValue,
     });
   }, [formData]);
-
-  
-  
 
   const onSubmitClick = useCallback((ev) => {
     ev.preventDefault();
@@ -50,64 +46,48 @@ const JsonForm = (props) => {
     }
   }, [props.json, formData]);
 
-  
-  
-
   const errors = formErrors && formErrors._count > 0 && Object.entries(formErrors).map(([fieldName, errorText]) => {
     return !fieldName.startsWith('_') && (
       <li key={fieldName}>{errorText}</li>
     );
   });
 
-  const fields = props.json.fields && props.json.fields.map((field, index) => {
-    const fieldId = `jsfr-field-${field.name}`;
-    const fieldClasses = `jsfr-field ${field.class} ${formErrors[field.name] ? 'jsfr-field-error' : ''}`;
-    const fieldWrapperClasses = `jsfr-field-wrapper ${field.wrapperClass} ${formErrors[field.name] ? 'jsfr-field-wrapper-error' : ''}`;
-    //check for drop down
+  const fields = props.json.fields && props.json.fields.map((field) => {
     if (field.type === 'select') {
       return (
-        <div key={index} className={fieldWrapperClasses}>
-          <label htmlFor={fieldId}>
-            {field.label}
-          </label>
-          <select id={fieldId} name={field.name} className={fieldClasses} onChange={onChange}>
-            {Object.keys(field.options).map((keys,index) => {
-              return <option key={index} value={field.options[keys]}>{field.options[keys]}</option>;
-            })}
-          </select>
-        </div>
+        <Select
+          key={field.name}
+          field={field}
+          currentValue={formData[field.name]}
+          hasError={formErrors[field.name]}
+          onValueChange={onValueChange}/>
       );
-    }
-    //check for radio button
-    else if(field.type === 'radio') {
-      {Object.keys(field.options).map((keys,index) => {
-        return [
-          <>
-            <label key={keys} htmlFor={field.options[keys]}>
-              {field.options[keys]}
-            </label>
-            <input type="radio" key={index} id={field.options[index]} name="gender" value={field.options[keys]} onChange={onChange}/>
-          </>,
-        ];
-      });} 
-    }
-    else{
+    } else if (field.type === 'radio') {
       return (
-        <div key={field.name} className={fieldWrapperClasses}>
-          <label htmlFor={fieldId}>
-            {field.label}
-          </label>
-
-          <input
-            id={fieldId}
-            type={field.type}
-            name={field.name}
-            value={formData[field.name] || ''}
-            placeholder={field.placeholder}
-            className={fieldClasses}
-            onChange={onChange}
-          />
-        </div>
+        <Radio
+          key={field.name}
+          field={field}
+          currentValue={formData[field.name]}
+          hasError={formErrors[field.name]}
+          onValueChange={onValueChange}/>
+      );
+    } else if (field.type === 'checkbox') {
+      return (
+        <Checkbox
+          key={field.name}
+          field={field}
+          currentValue={formData[field.name]}
+          hasError={formErrors[field.name]}
+          onValueChange={onValueChange}/>
+      );
+    } else {
+      return (
+        <Input
+          key={field.name}
+          field={field}
+          currentValue={formData[field.name]}
+          hasError={formErrors[field.name]}
+          onValueChange={onValueChange}/>
       );
     }
   });
