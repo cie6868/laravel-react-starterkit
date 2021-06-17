@@ -46,6 +46,7 @@
         "url-join": "^4.0.1"
     },
     "dependencies": {
-        "react-router-dom": "^5.2.0"
+        "react-router-dom": "^5.2.0",
+        "signature_pad": "^3.0.0-beta.4"
     }
 }
