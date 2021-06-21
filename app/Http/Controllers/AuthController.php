@@ -70,4 +70,10 @@ class AuthController extends Controller
         return Auth::guard();
     }
 
+    public function register(Request $request)
+    {
+        (new JsonFormValidator(base_path('forms/register.json')))->validate($request);
+
+        // do nothing as we are only testing the register form validation here
+    }
 }

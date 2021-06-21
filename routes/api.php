@@ -22,4 +22,5 @@ Route::prefix('v1/auth')->middleware('auth:api')->group(function() {
     Route::get('refresh', [AuthController::class, 'refresh']);
     Route::get('me', [AuthController::class, 'me']);
     Route::get('logout', [AuthController::class, 'logout']);
+    Route::post('register', [AuthController::class, 'register']);
 });

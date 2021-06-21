@@ -1,0 +1,143 @@
+{
+    "name": "createAccount",
+    "class": "createAccount-form",
+    "fields": [
+        {
+            "name": "first_name",
+            "label": "First Name",
+            "type": "text",
+            "placeholder": "First Name",
+            "validation": "required|alpha|min:3",
+            "defaultValue": "Test",
+            "class": "txt-first-name",
+            "wrapperClass": "txt-first-name-wrapper"
+        },
+        {
+            "name": "last_name",
+            "label": "Last Name",
+            "type": "text",
+            "placeholder": "First Name",
+            "validation": "required|alpha|min:3",
+            "defaultValue": "Test",
+            "class": "txt-last-name",
+            "wrapperClass": "txt-last-name-wrapper"
+        },
+        {
+            "name": "address",
+            "label": "Address",
+            "type": "text",
+            "placeholder": "Address",
+            "validation": "required|min:3",
+            "defaultValue": "Test",
+            "class": "txt-address",
+            "wrapperClass": "txt-address-wrapper"
+        },
+        {
+            "name": "date_of_birth",
+            "label": "Date of Birth",
+            "type": "date",
+            "placeholder": "Date of Birth",
+            "validation": "required|date",
+            "defaultValue": "2021-06-15",
+            "class": "txt-dob",
+            "wrapperClass": "txt-dob-wrapper"
+        },
+        {
+            "name": "nic",
+            "label": "NIC Number",
+            "type": "text",
+            "placeholder": "NIC Number",
+            "validation": "required|nic_lk",
+            "defaultValue": "199312510011",
+            "class": "txt-nic",
+            "wrapperClass": "txt-nic-wrapper"
+        },
+        {
+            "name": "email",
+            "label": "Email Address",
+            "type": "email",
+            "placeholder": "Email Address",
+            "validation": "required|email",
+            "defaultValue": "chamath@dxdy.tech",
+            "class": "txt-email",
+            "wrapperClass": "txt-email-wrapper"
+        },
+        {
+            "name": "phone",
+            "label": "Phone Number (optional)",
+            "type": "text",
+            "placeholder": "Phone Number",
+            "validation": "phone_lk",
+            "defaultValue": "0777123123",
+            "class": "txt-phone",
+            "wrapperClass": "txt-phone-wrapper"
+        },
+        {
+            "name": "role",
+            "label": "Role",
+            "type": "select",
+            "placeholder": "Select your role",
+            "options": {
+                "dev": "Developer",
+                "tl": "Team Lead",
+                "qa": "Quality Assurance",
+                "ba": "Business Analyst",
+                "pm": "Project Manager"
+            },
+            "validation": "required",
+            "defaultValue": "qa",
+            "class": "drp-role",
+            "wrapperClass": "drp-role-wrapper"
+        },
+        {
+            "name": "gender",
+            "label": "Gender",
+            "type": "radio",
+            "options": {
+                "f": "Female",
+                "m": "Male"
+            },
+            "validation": "required",
+            "defaultValue": "f",
+            "class": "rad-gender",
+            "wrapperClass": "rad-gender-wrapper"
+        },
+        {
+            "name": "years_of_experience",
+            "label": "Experience (in years)",
+            "type": "number",
+            "placeholder": "0",
+            "validation": "required|numeric|gt:0|lt:15",
+            "defaultValue": 14,
+            "class": "txt-exp",
+            "wrapperClass": "txt-exp-wrapper"
+        },
+        {
+            "name": "invite_code",
+            "label": "Invite Code",
+            "type": "text",
+            "placeholder": "Invite Code",
+            "options": {
+                "1A2B3C": "",
+                "QWERTY1": ""
+            },
+            "validation": "required",
+            "defaultValue": "1A2B3C",
+            "class": "txt-invite-code",
+            "wrapperClass": "txt-invite-code-wrapper"
+        },
+        {
+            "name": "terms_and_conditions",
+            "label": "I accept the terms and conditions",
+            "type": "checkbox",
+            "validation": "required",
+            "defaultValue": "accepted",
+            "class": "chk-toc",
+            "wrapperClass": "chk-toc-wrapper"
+        }
+    ],
+    "submit": {
+        "label": "Create Account",
+        "class": "btn-create"
+    }
+  }
